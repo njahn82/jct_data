@@ -37,10 +37,15 @@
     },
     "cli": {
       "Package": "cli",
-      "Version": "3.5.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "eb9fc121ad9a1075c471107ef185be46",
+      "Version": "3.5.0.9000",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "r-lib",
+      "RemoteRepo": "cli",
+      "RemoteRef": "main",
+      "RemoteSha": "bc503509cddb65d0007aeb301936e27de76bc7d7",
+      "Hash": "3c0f6c5fe83df5164eb31f316b967193",
       "Requirements": []
     },
     "clipr": {
