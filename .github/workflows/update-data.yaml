@@ -25,7 +25,9 @@ jobs:
       
       - name: Fetch JCT data
         run: |
-         Rscript -e "sessionInfo()"
+         renv::restore()
+         sessionInfo()
+        shell: Rscript {0}
          
       - name: Commit and push changes
         run: |
