@@ -8,15 +8,15 @@ library(progress)
 jct_raw <-
   readr::read_csv(
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vStezELi7qnKcyE8OiO2OYx2kqQDOnNsDX1JfAsK487n2uB_Dve5iDTwhUFfJ7eFPDhEjkfhXhqVTGw/pub?gid=1130349201&single=true&output=csv"
-  )
-jct_short <- jct_raw %>%
+  ) 
+
+jct_short <- jct_raw |>
   select(esac_id =  `ESAC ID`, data_url = `Data URL`)
 
 #' Helper function fetching all journal info by ESAC agreement
 jct_fetch <- function(data_url = NULL) {
   
   # Progress
-  pb$tick()
   message(paste("Fetching:", data_url))
   # Download spreadsheet
   req <- readr::read_csv(
@@ -27,32 +27,32 @@ jct_fetch <- function(data_url = NULL) {
   )
   
   # Journal-level data
-  jn_df <- req %>%
+  jn_df <- req|>
     select(
       journal_name = 1,
       issn_print = 2,
       issn_online = 3,
       first_seen = 4,
       last_seen = 5
-    ) %>%
-    filter(!is.na(journal_name)) %>%
+    )|>
+    filter(!is.na(journal_name)) |>
     mutate(data_url = data_url)
   
   # Institutional-level data
-  inst_df <- req %>%
+  inst_df <- req |>
     select(
       inst_name = 6,
       ror_id = 7,
       inst_first_seen = 8,
       ins_last_seen = 9
-    ) %>%
+    ) |>
+    filter(!is.na(inst_name)) |>
     mutate(data_url = data_url)
   
   # Return
   list(jn_df = jn_df, inst_df = inst_df)
 }
-# Initialize progress bar
-pb <- progress_bar$new(total = length(jct_raw$`Data URL`))
+
 # Call
 jct_journal_out <-
   purrr::map(jct_raw$`Data URL`, purrr::safely(jct_fetch))
@@ -60,7 +60,7 @@ jct_journal_out <-
 jn_df <- purrr::map(jct_journal_out, "result") |>
   purrr::map_df("jn_df")
 # add esac id
-jn_df %>%
+jn_df|>
   inner_join(jct_short, by = "data_url") |>
   write_csv("data/jct_journals.csv")
 # Get inst data
