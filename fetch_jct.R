@@ -17,7 +17,7 @@ jct_fetch <- function(data_url = NULL) {
   
   # Progress
   pb$tick()
-  
+  message(paste("Fetching:", data_url))
   # Download spreadsheet
   req <- readr::read_csv(
     data_url,
@@ -57,16 +57,20 @@ pb <- progress_bar$new(total = length(jct_raw$`Data URL`))
 jct_journal_out <-
   purrr::map(jct_raw$`Data URL`, purrr::safely(jct_fetch))
 # Get journal data
-jn_df <- purrr::map(jct_journal_out, "result") %>%
+jn_df <- purrr::map(jct_journal_out, "result") |>
   purrr::map_df("jn_df")
 # add esac id
 jn_df %>%
-  inner_join(jct_short, by = "data_url") %>%
+  inner_join(jct_short, by = "data_url") |>
   write_csv("data/jct_journals.csv")
 # Get inst data
-inst_df <- purrr::map(jct_journal_out, "result") %>%
+inst_df <- purrr::map(jct_journal_out, "result") |>
   purrr::map_df("inst_df") 
 
-inner_join(inst_df, jct_short, by = "data_url") %>%
+inner_join(inst_df, jct_short, by = "data_url") |>
   write_csv("data/jct_institutions.csv")
+
+# Print error log
+purrr::map(jct_journal_out, "error")
+
 
