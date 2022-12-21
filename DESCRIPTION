@@ -1,0 +1,16 @@
+Package: jctdata
+Title: Transformative Agreements Public Data exposed by the Journal Checker Tool
+Version: 0.0.0.9000
+Authors@R: 
+    person("Najko", "Jahn", , "najko.jahn@sub.uni-goettingen.de", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-5105-1463"))
+Description: Programmatically fetch Transformative Agreements Public Data exposed by the Journal Checker Tool <https://journalcheckertool.org/transformative-agreements/>.
+License: CC0
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports: 
+    dplyr,
+    readr,
+    purrr,
+    progress
