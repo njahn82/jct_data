@@ -25,7 +25,7 @@ jobs:
       
       - name: Fetch JCT data
         run: |
-         sessionInfo()
+         source("fetch_jct.R")
         shell: Rscript {0}
          
       - name: Commit and push changes
