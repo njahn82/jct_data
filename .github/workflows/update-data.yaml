@@ -43,6 +43,12 @@ jobs:
         run: knitr::knit("release_msg.Rmd")
         shell: Rscript {0}
         
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+        
       - name: Release
         uses: softprops/action-gh-release@v1
         with:

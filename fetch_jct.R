@@ -57,7 +57,7 @@ jct_fetch <- function(data_url = NULL) {
 
 # Call
 jct_journal_out <-
-  purrr::map(jct_raw$`Data URL`, purrr::safely(jct_fetch))
+  purrr::map(jct_raw$`Data URL`[1:5], purrr::safely(jct_fetch))
 # Get journal data
 jn_df <- purrr::map(jct_journal_out, "result") |>
   purrr::map_df("jn_df")
@@ -72,8 +72,3 @@ inst_df <- purrr::map(jct_journal_out, "result") |>
 inner_join(inst_df, jct_short, by = "data_url") |>
   write_csv("data/jct_institutions.csv")
 
-# Print error log
-message(purrr::map(jct_journal_out, "error") |> 
-          purrr::compact() |> 
-          cat(sep = "/n")
-        )
