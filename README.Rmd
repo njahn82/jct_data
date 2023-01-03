@@ -16,16 +16,9 @@ library(gert)
 library(dplyr)
 library(knitr)
 
-git_config_global()
 
-git_config_global_set("user.name", "Jerry Johnson")
-git_config_global_set("user.email", "jerry@gmail.com")
 
-gert::git_log() |>
-  dplyr::filter(time > as.POSIXct("2022-12-22")) |>
-  dplyr::filter(grepl("Update data", message)) |>
-  dplyr::select(`Time updated` = time, `Snapshot` = commit) |>
-  knitr::kable()
+gert::git_log() 
 ```
 
 ## Latest Stats as on `r Sys.Date()`
