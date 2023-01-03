@@ -15,8 +15,8 @@ Data are stored in the `data/` folder, comprising two files
 
 |Time updated        |Snapshot                                                                                                                                      |
 |:-------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|
-|2023-01-02 02:19:56 |<a href='https://github.com/njahn82/jct_data/tree/fd749477fbe5e0d58040bdaa4466e63886e9fb17/data'>fd749477fbe5e0d58040bdaa4466e63886e9fb17</a> |
-|2022-12-26 02:19:15 |<a href='https://github.com/njahn82/jct_data/tree/9816f3c9f6fd9679b38a8f8279549c723dbc19ba/data'>9816f3c9f6fd9679b38a8f8279549c723dbc19ba</a> |
+|2023-01-02 03:19:56 |<a href='https://github.com/njahn82/jct_data/tree/fd749477fbe5e0d58040bdaa4466e63886e9fb17/data'>fd749477fbe5e0d58040bdaa4466e63886e9fb17</a> |
+|2022-12-26 03:19:15 |<a href='https://github.com/njahn82/jct_data/tree/9816f3c9f6fd9679b38a8f8279549c723dbc19ba/data'>9816f3c9f6fd9679b38a8f8279549c723dbc19ba</a> |
 
 ## Latest stats as on 2023-01-03
 
