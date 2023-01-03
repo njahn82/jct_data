@@ -1,0 +1,55 @@
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+knitr::knit_hooks$set(inline = function(x) {
+  prettyNum(x, big.mark=",")
+})
+
+library(dplyr)
+library(readr)
+
+jct_journals <- readr::read_csv("data/jct_journals.csv")
+jct_institutions <- readr::read_csv("data/jct_institutions.csv") |>
+  mutate(inst_first_seen = as.Date(inst_first_seen))
+```
+
+## Data Snapshot `r as.character(Sys.Date())`
+
+This release provides a snapshot of publicly available transformative agreement data as provided by the cOAlition S Journal Checker Tool on **`r as.character(Sys.Date())`**.
+
+This release contains two files
+
+### `jct_journals.csv`
+
+```{r, results='asis'}
+jct_journals |>
+  head() |>
+  knitr::kable()
+```
+
+- `jct_institutions.csv`: institutions and their properties
+
+```{r, results='asis'}
+jct_institutions |>
+  head() |>
+  knitr::kable()
+```
+
+The files are stored in the `data` folder and attached to this GitHub release.
+
+## Stats
+
+- `r length(unique(jct_journals$esac_id))` transformative agreements with ESAC ID
+- `r length(unique(jct_journals$journal_name))` journal titles covered
+- `r length(unique(jct_institutions$inst_name))` institutions participating 
+- `r length(unique(jct_institutions$ror_id))` institutions covered have a ROR-ID
+
+
+## LICENSE
+
+CC-O
+
+
+
+
