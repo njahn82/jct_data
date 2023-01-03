@@ -22,10 +22,10 @@ Data are stored in the `data/` folder, comprising two files
 
 
 
-- 400 transformative agreements with ESAC ID
-- 21,394 journal titles covered
-- 7,587 institutions participating
-- 3,530 institutions covered have a ROR-ID
+- 4 transformative agreements with ESAC ID
+- 601 journal titles covered
+- 46 institutions participating
+- 45 institutions covered have a ROR-ID
 
 ## License
 
