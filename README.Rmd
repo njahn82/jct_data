@@ -11,7 +11,7 @@ Data are stored in the `data/` folder, comprising two files
 
 ## Snapshots
 
-```{r, results='asis', message=FALSE, echo=TRUE}
+```{r, results='asis', message=FALSE}
 library(gert)
 library(dplyr)
 library(knitr)
@@ -28,7 +28,7 @@ gert::git_log() |>
 
 ## Latest Stats as on `r Sys.Date()`
 
-```{r echo =FALSE, message=FALSE}
+```{r echo =FALSE, message=FALSE, warning=FALSE}
 jct_journals <- readr::read_csv("data/jct_journals.csv")
 jct_institutions <- readr::read_csv("data/jct_institutions.csv")
 ```
