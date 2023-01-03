@@ -40,8 +40,4 @@ jobs:
           git commit -m "Update data" || echo "No changes to commit"
           git pull --ff-only
           git push origin 
-          
-      - uses: rymndhng/release-on-push-action@master
-        with:
-          bump_version_scheme: minor
-          use_github_release_notes: true
+     
