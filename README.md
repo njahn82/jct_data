@@ -17,15 +17,22 @@ library(gert)
 library(dplyr)
 library(knitr)
 
+gert::git_clone("https://github.com/njahn82/jct_data/")
+setwd("jct_data/")
 
-
-gert::git_log() 
+gert::git_log() |>
+  dplyr::filter(time > as.POSIXct("2022-12-22")) |>
+  dplyr::filter(grepl("Update data", message)) |>
+  dplyr::select(`Time updated` = time, `Snapshot` = commit) |>
+  knitr::kable()
 ```
 
-# A tibble: 1 × 6
-  commit                          author time                files merge message
-* <chr>                           <chr>  <dttm>              <int> <lgl> <chr>  
-1 3d003f9e82aecc069914c545649162… najah… 2023-01-03 18:30:33    NA TRUE  "Merge…
+
+
+|Time updated        |Snapshot                                 |
+|:-------------------|:----------------------------------------|
+|2023-01-02 02:19:56 |fd749477fbe5e0d58040bdaa4466e63886e9fb17 |
+|2022-12-26 02:19:15 |9816f3c9f6fd9679b38a8f8279549c723dbc19ba |
 
 ## Latest Stats as on 2023-01-03
 
