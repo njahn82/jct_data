@@ -17,6 +17,7 @@ library(gert)
 library(dplyr)
 library(knitr)
 
+
 gert::git_log() |>
   dplyr::filter(time > as.POSIXct("2022-12-22")) |>
   dplyr::filter(grepl("Update data", message)) |>
