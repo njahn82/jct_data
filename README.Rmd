@@ -25,6 +25,11 @@ gert::git_log() |>
 
 ## Latest Stats as on `r Sys.Date()`
 
+```{r echo =FALSE, message=FALSE}
+jct_journals <- readr::read_csv("data/jct_journals.csv")
+jct_institutions <- readr::read_csv("data/jct_institutions.csv")
+```
+
 - `r length(unique(jct_journals$esac_id))` transformative agreements with ESAC ID
 - `r length(unique(jct_journals$journal_name))` journal titles covered
 - `r length(unique(jct_institutions$inst_name))` institutions participating 
