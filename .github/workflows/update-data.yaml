@@ -47,8 +47,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-          data/jct_journals.csv
-          data/jct_institutions.csv
+            data/jct_journals.csv
+            data/jct_institutions.csv
           body_path: release_msg.md
 
  
