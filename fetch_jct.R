@@ -11,7 +11,9 @@ jct_raw <-
   ) 
 
 jct_short <- jct_raw |>
-  select(esac_id =  `ESAC ID`, data_url = `Data URL`)
+  select(esac_id =  `ESAC ID`, data_url = `Data URL`, 
+         end_date = `End Date`, 
+         last_review = `Last Reviewed`)
 
 #' Helper function fetching all journal info by ESAC agreement
 jct_fetch <- function(data_url = NULL) {
@@ -71,6 +73,7 @@ inner_join(inst_df, jct_short, by = "data_url") |>
   write_csv("data/jct_institutions.csv")
 
 # Print error log
-purrr::map(jct_journal_out, "error")
-
-
+message(purrr::map(jct_journal_out, "error") |> 
+          purrr::compact() |> 
+          cat(sep = "/n")
+        )

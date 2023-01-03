@@ -13,4 +13,5 @@ Imports:
     dplyr,
     readr,
     purrr,
+    knitr,
     curl

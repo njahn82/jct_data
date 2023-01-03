@@ -38,5 +38,17 @@ jobs:
           git commit -m "Update data" || echo "No changes to commit"
           git pull --ff-only
           git push origin
+          
+      - name: Release message
+        run: knitr::knit("release_msg.Rmd")
+        shell: Rscript {0}
+        
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+          data/jct_journals.csv
+          data/jct_institutions.csv
+          body_path: release_msg.md
 
  
