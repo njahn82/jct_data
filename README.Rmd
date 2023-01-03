@@ -18,9 +18,8 @@ library(dplyr)
 library(knitr)
 
 gert::git_clone("https://github.com/njahn82/jct_data/")
-setwd("jct_data/")
 
-gert::git_log() |>
+gert::git_log(repo = "jct_data/") |>
   dplyr::filter(time > as.POSIXct("2022-12-22")) |>
   dplyr::filter(grepl("Update data", message)) |>
   dplyr::mutate(link = paste0("<a href='https://github.com/njahn82/jct_data/tree/", commit, "/data'>",commit, "</a>")) |>
