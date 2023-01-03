@@ -36,9 +36,9 @@ jct_institutions <- readr::read_csv("data/jct_institutions.csv")
 ```
 
 - `r length(unique(jct_journals$esac_id))` transformative agreements with ESAC ID
-- `r length(unique(jct_journals$journal_name))` journal titles covered
-- `r length(unique(jct_institutions$inst_name))` institutions participating 
-- `r length(unique(jct_institutions$ror_id))` institutions covered have a ROR-ID
+- `r format(length(unique(jct_journals$journal_name)), big.mark=",")` journal titles covered
+- `r format(length(unique(jct_institutions$inst_name)), big.mark=",")` institutions participating
+- `r format(length(unique(jct_institutions$ror_id)), big.mark=",")` institutions covered have a ROR-ID
 
 ## License
 
