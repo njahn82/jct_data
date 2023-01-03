@@ -57,7 +57,7 @@ jct_fetch <- function(data_url = NULL) {
 
 # Call
 jct_journal_out <-
-  purrr::map(jct_raw$`Data URL`{1:5}, purrr::safely(jct_fetch))
+  purrr::map(jct_raw$`Data URL`[1:5], purrr::safely(jct_fetch))
 # Get journal data
 jn_df <- purrr::map(jct_journal_out, "result") |>
   purrr::map_df("jn_df")
