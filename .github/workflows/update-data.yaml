@@ -44,7 +44,7 @@ jobs:
       
       - name: Render README files and Commit Results
         run: |
-          Rscript -e 'knitr::knit("README.Rmd")
+          Rscript -e 'knitr::knit("README.Rmd")'
           git config --local user.name "$GITHUB_ACTOR"
           git add README.md 
           git commit -m "Render README" || echo "No changes to commit"
