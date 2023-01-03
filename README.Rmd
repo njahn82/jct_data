@@ -11,10 +11,15 @@ Data are stored in the `data/` folder, comprising two files
 
 ## Snapshots
 
-```{r, results='asis', message=FALSE, echo=FALSE}
+```{r, results='asis', message=FALSE, echo=TRUE}
 library(gert)
 library(dplyr)
 library(knitr)
+
+git_config_global()
+
+git_config_global_set("user.name", "Jerry Johnson")
+git_config_global_set("user.email", "jerry@gmail.com")
 
 gert::git_log() |>
   dplyr::filter(time > as.POSIXct("2022-12-22")) |>
