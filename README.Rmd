@@ -1,17 +1,18 @@
-## Weekly Transformative Aggreement Data dumps
+## Weekly Transformative Agreement Data dumps
 
 This repo contains weekly dumps of [public transformative agreement data](https://journalcheckertool.org/transformative-agreements/) as provided by the [Journal Checker Tool](https://journalcheckertool.org/) from the [cOAlition S](https://www.coalition-s.org/). 
+
 
 ## Data
 
 Data are stored in the `data/` folder, comprising two files
 
-- `data/jct_journals.csv`: journals and their properties
-- `data/jct_institutions.csv`: institutions and their properties
+- `data/jct_journals.csv`: complete dump of journals metadata associated with transformative agreements
+- `data/jct_institutions.csv`: complete dump of institutions metadata associated with transformative agreements
 
 ## Snapshots
 
-```{r, results='asis', message=FALSE}
+```{r, results='asis', message=FALSE, echo=FALSE}
 library(gert)
 library(dplyr)
 library(knitr)
@@ -27,7 +28,7 @@ gert::git_log() |>
   knitr::kable()
 ```
 
-## Latest Stats as on `r Sys.Date()`
+## Latest stats as on `r Sys.Date()`
 
 ```{r echo =FALSE, message=FALSE, warning=FALSE}
 jct_journals <- readr::read_csv("data/jct_journals.csv")
