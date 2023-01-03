@@ -15,4 +15,5 @@ Imports:
     purrr,
     knitr,
     curl,
-    gert
+    gert,
+    rmarkdown
