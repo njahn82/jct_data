@@ -39,7 +39,6 @@ jobs:
           git pull --ff-only
           git push origin 
           
-      steps:
       - uses: rymndhng/release-on-push-action@master
         with:
           bump_version_scheme: minor
