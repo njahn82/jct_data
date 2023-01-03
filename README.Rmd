@@ -1,0 +1,35 @@
+## Weekly Transformative Aggreement Data dumps
+
+This repo contains weekly dumps of [public transformative agreement data](https://journalcheckertool.org/transformative-agreements/) as provided by the [Journal Checker Tool](https://journalcheckertool.org/) from the [cOAlition S](https://www.coalition-s.org/). 
+
+## Data
+
+Data are stored in the `data/` folder, comprising two files
+
+- `data/jct_journals.csv`: journals and their properties
+- `data/jct_institutions.csv`: institutions and their properties
+
+## Snapshots
+
+```{r, results='asis', message=FALSE, echo=FALSE}
+library(gert)
+library(dplyr)
+library(knitr)
+
+gert::git_log() |>
+  dplyr::filter(time > as.POSIXct("2022-12-22")) |>
+  dplyr::filter(grepl("Update data", message)) |>
+  dplyr::select(`Time updated` = time, `Snapshot` = commit) |>
+  knitr::kable()
+```
+
+## Latest Stats as on `r Sys.Date()`
+
+- `r length(unique(jct_journals$esac_id))` transformative agreements with ESAC ID
+- `r length(unique(jct_journals$journal_name))` journal titles covered
+- `r length(unique(jct_institutions$inst_name))` institutions participating 
+- `r length(unique(jct_institutions$ror_id))` institutions covered have a ROR-ID
+
+## License
+
+CCO
