@@ -17,34 +17,15 @@ library(gert)
 library(dplyr)
 library(knitr)
 
-git_config_global()
+
+
+gert::git_log() 
 ```
 
-# A tibble: 6 × 3
-  name                value                  level 
-* <chr>               <chr>                  <chr> 
-1 safe.directory      *                      system
-2 filter.lfs.clean    git-lfs clean -- %f    system
-3 filter.lfs.smudge   git-lfs smudge -- %f   system
-4 filter.lfs.process  git-lfs filter-process system
-5 filter.lfs.required true                   system
-6 credential.helper   cache                  global
-
-```r
-git_config_global_set("user.name", "Jerry Johnson")
-git_config_global_set("user.email", "jerry@gmail.com")
-
-gert::git_log() |>
-  dplyr::filter(time > as.POSIXct("2022-12-22")) |>
-  dplyr::filter(grepl("Update data", message)) |>
-  dplyr::select(`Time updated` = time, `Snapshot` = commit) |>
-  knitr::kable()
-```
-
-
-
-|Time updated |Snapshot |
-|:------------|:--------|
+# A tibble: 1 × 6
+  commit                          author time                files merge message
+* <chr>                           <chr>  <dttm>              <int> <lgl> <chr>  
+1 3d003f9e82aecc069914c545649162… najah… 2023-01-03 18:30:33    NA TRUE  "Merge…
 
 ## Latest Stats as on 2023-01-03
 
