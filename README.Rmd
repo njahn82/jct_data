@@ -13,20 +13,28 @@ Data are stored in the `data/` folder, comprising two files
 ## Snapshots
 
 ```{r, results='asis', message=FALSE, echo=FALSE}
-library(gert)
 library(dplyr)
+library(lubridate)
 library(knitr)
 
-
-gert::git_log() |>
-  dplyr::filter(time > as.POSIXct("2022-12-22")) |>
-  dplyr::filter(grepl("Update data", message)) |>
+git_log <- readr::read_tsv("log.txt", col_names = FALSE)
+git_log |>
+  select(commit = 1, date = 2) |>
+  filter(lubridate::wday(date) == 2 | date ==  max(date)) |>
   dplyr::mutate(link = paste0("<a href='https://github.com/njahn82/jct_data/tree/", commit, "/data'>",commit, "</a>")) |>
-  dplyr::select(`Time updated` = time, `Snapshot` = link) |>
+  select(`Time added` = date, `Commit` = link) |>
   knitr::kable()
 ```
 
-## Latest stats as on `r Sys.Date()`
+```{r echo =FALSE, message=FALSE, warning=FALSE}
+# Most recent data update
+max_update <- git_log |>
+  head(1) |>
+  mutate(my_date = as_date(X2)) |>
+  pull(my_date)
+```
+
+## Latest stats as on `r max_update`
 
 ```{r echo =FALSE, message=FALSE, warning=FALSE}
 jct_journals <- readr::read_csv("data/jct_journals.csv")

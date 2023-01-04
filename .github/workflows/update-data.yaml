@@ -33,20 +33,21 @@ jobs:
          source("fetch_jct.R")
         shell: Rscript {0}
  
-      - name: Commit and push changes
+      - name: Commit data changes
         run: |
           git config --local user.name "$GITHUB_ACTOR"
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git add data/
-          git commit -m "test" || echo "No changes to commit"
-          git pull --ff-only
-          git push origin 
-      
-      - name: Render README files and Commit Results
+          git commit -m "Update data" || echo "No changes to commit"
+          
+      - name: Update README and commit
         run: |
+          git log --pretty=format:"%H%x09%ad%x09%an%x09%s" --date=iso-strict --grep="Update data" > log.txt
           Rscript -e 'knitr::knit("README.Rmd")'
-          git config --local user.name "$GITHUB_ACTOR"
           git add README.md 
           git commit -m "Render README" || echo "No changes to commit"
-          git push origin 
+          
+      - name: Push changes
+        run: |
+          git push origin
           

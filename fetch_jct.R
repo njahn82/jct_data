@@ -57,12 +57,12 @@ jct_fetch <- function(data_url = NULL) {
 
 # Call
 jct_journal_out <-
-  purrr::map(jct_raw$`Data URL`[1:4], purrr::safely(jct_fetch))
+  purrr::map(jct_raw$`Data URL`, purrr::safely(jct_fetch))
 # Get journal data
 jn_df <- purrr::map(jct_journal_out, "result") |>
   purrr::map_df("jn_df")
 # add esac id
-jn_df|>
+jn_df |>
   inner_join(jct_short, by = "data_url") |>
   write_csv("data/jct_journals.csv")
 # Get inst data

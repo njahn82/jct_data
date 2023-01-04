@@ -15,4 +15,4 @@ Imports:
     purrr,
     knitr,
     curl,
-    gert
+    lubridate
