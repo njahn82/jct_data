@@ -4,7 +4,6 @@
 library(dplyr)
 library(purrr)
 library(readr)
-library(progress)
 jct_raw <-
   readr::read_csv(
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vStezELi7qnKcyE8OiO2OYx2kqQDOnNsDX1JfAsK487n2uB_Dve5iDTwhUFfJ7eFPDhEjkfhXhqVTGw/pub?gid=1130349201&single=true&output=csv"
