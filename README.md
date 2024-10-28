@@ -15,6 +15,7 @@ Data are stored in the `data/` folder, comprising two files
 
 |Time added          |Commit                                                                                                                                        |
 |:-------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|
+|2024-10-28 02:41:28 |<a href='https://github.com/njahn82/jct_data/tree/b31f78327c18559307dd78e7914fa53b3fde18e5/data'>b31f78327c18559307dd78e7914fa53b3fde18e5</a> |
 |2024-10-21 02:39:49 |<a href='https://github.com/njahn82/jct_data/tree/219ee7137d7b6dd6901002188c7fe9477d7f6ce8/data'>219ee7137d7b6dd6901002188c7fe9477d7f6ce8</a> |
 |2024-10-14 02:34:24 |<a href='https://github.com/njahn82/jct_data/tree/d5231a72ad69a9a0d98927f5f25b32576733cc04/data'>d5231a72ad69a9a0d98927f5f25b32576733cc04</a> |
 |2024-10-07 02:35:35 |<a href='https://github.com/njahn82/jct_data/tree/ff51c26395eb62bcd4738a861d3adde2177d2242/data'>ff51c26395eb62bcd4738a861d3adde2177d2242</a> |
@@ -113,14 +114,14 @@ Data are stored in the `data/` folder, comprising two files
 
 
 
-## Latest stats as on 2024-10-21
+## Latest stats as on 2024-10-28
 
 
 
-- 535 transformative agreements with ESAC ID
-- 21,341 journal titles covered
-- 8,068 institutions participating
-- 4,069 institutions covered have a ROR-ID
+- 540 transformative agreements with ESAC ID
+- 21,733 journal titles covered
+- 8,075 institutions participating
+- 4,074 institutions covered have a ROR-ID
 
 ## License
 
