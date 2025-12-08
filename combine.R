@@ -1,54 +1,63 @@
 library(tidyverse)
-library(gert)
 
-jct_git_log <- git_log(max = 1000, repo = ".") |>
-  filter(grepl("Update data", message))
+#' Obtain git history only where data was updated in a file
+my_jct <- readr::read_tsv(
+  pipe('git log --pretty=format:"%H%x09%ad%x09%an%x09%s" --date=iso-strict --grep="Update data"'),
+  col_names = c("commit_hash", "time_stamp", "user", "commit_message")
+)
 
-#' Read specific version of the file
-read_git_version <- function(commit_hash, file = "data/jct_institutions.csv") {
-  print(commit_hash)
-  system(paste("git checkout", commit_hash))
-  readr::read_csv(file, col_types = cols(.default = "c")) |>
-    mutate(commit = commit_hash)
-}
+#' Get ESAC-IDS from journal list using git show
+jct_jn_all <- map_df(
+  my_jct$commit_hash, function(x) {
+    bash_cmd <- paste0('git show ', x, ':data/jct_journals.csv')
+    readr::read_csv(pipe(bash_cmd), col_types = cols(.default = "c")) |>
+      mutate(commit_hash = x)
+  }
+)
 
-## Journals
-jct_jn_all <- map_df(jct_git_log$commit, read_git_version,
-                     file = "data/jct_journals.csv")
-
-jct_jn_top <- jct_git_log |>
-  select(commit, time) |>
-  inner_join(jct_jn_all, by = "commit") |>
+#' Get journal metadata from the latest version by ESAC id
+jct_jn_top <- my_jct |>
+  select(commit_hash, time_stamp) |>
+  inner_join(jct_jn_all, by = "commit_hash") |>
   group_by(esac_id) |>
-  slice_max(time, n = 1) |>
+  slice_max(time_stamp, n = 1) |>
   ungroup()
 
+#' Safeguard data
 jct_jn <- jct_jn_top |>
   distinct(esac_id,
-         journal_name,
-         issn_print,
-         issn_online,
-         time_last_seen = time,
-         commit)
+           journal_name,
+           issn_print,
+           issn_online,
+           time_last_seen = time_stamp,
+           commit_hash)
 write_csv(jct_jn, "data/jct_jn_all.csv")
 
-## Institutions
-jct_inst_all <- map_df(jct_git_log$commit, read_git_version)
+#' Institutions
 
-jct_inst_top <- jct_git_log |>
-  select(commit, time) |>
-  inner_join(jct_inst_all, by = "commit") |>
+#' Get jct institution data using git show
+jct_inst_all <- map_df(
+  my_jct$commit_hash, function(x) {
+    bash_cmd <- paste0('git show ', x, ':data/jct_institutions.csv')
+    readr::read_csv(pipe(bash_cmd), col_types = cols(.default = "c")) |>
+      mutate(commit_hash = x)
+  }
+)
+
+jct_inst_top <- my_jct |>
+  select(commit_hash, time_stamp) |>
+  inner_join(jct_inst_all, by = "commit_hash") |>
   group_by(esac_id) |>
-  slice_max(time, n = 1) |>
+  slice_max(time_stamp, n = 1) |>
   ungroup()
 
 jct_inst_ <- jct_inst_top |>
   filter(esac_id != "_ghost TA") |>
   distinct(esac_id,
- #          inst_name,
+           inst_name,
            ror_id,
-           time_last_seen = time,
-           commit)
+           time_last_seen = time_stamp,
+           commit_hash)
 write_csv(jct_inst_, "data/jct_inst_all.csv")
 
 ## Add ESAC data

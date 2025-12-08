@@ -1,5 +1,5 @@
 # enrich
-issn_l <- readr::read_tsv("~/Downloads/issnltables20250413/20250413.ISSN-to-ISSN-L.txt", col_names = c("issn", "issn_l")) |>
+issn_l <- readr::read_tsv("~/Downloads/issnltables20251207/20251207.ISSN-to-ISSN-L.txt", col_names = c("issn", "issn_l")) |>
   mutate(issn_l = substr(issn_l, start = 1, stop = 9))
 jct_jn <- readr::read_csv("data/jct_jn_all.csv")
 
@@ -13,7 +13,7 @@ jct_jn_short <- jct_jn |>
            issn_l,
    #        issn,
            time_last_seen,
-   commit)
+   commit_hash)
 
 write_csv(jct_jn_short, "data/jct_jn_short.csv")
 

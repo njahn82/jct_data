@@ -45,7 +45,7 @@ current_esac_counts <- jct_esac_ids |>
 my_jct_df <- inner_join(all_counts, current_esac_counts, by = c("time" = "time_stamp")) |>
   # Remove test case with five contracts
   filter(active != 5) |>
-  mutate(removed = all - active) |>
+  mutate(vanished = all - active) |>
   pivot_longer(c(active, vanished)) |>
   mutate(name = fct(name, levels = c("active", "vanished")))
 
