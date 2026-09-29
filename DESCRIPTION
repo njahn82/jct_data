@@ -15,4 +15,9 @@ Imports:
     purrr,
     knitr,
     curl,
-    lubridate
+    lubridate,
+    tidyr,
+    forcats (>= 1.0.0),
+    ggplot2,
+    scales,
+    svglite

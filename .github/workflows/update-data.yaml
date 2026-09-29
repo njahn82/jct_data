@@ -44,7 +44,7 @@ jobs:
         run: |
           git log --pretty=format:"%H%x09%ad%x09%an%x09%s" --date=iso-strict --grep="Update data" > log.txt
           Rscript -e 'knitr::knit("README.Rmd")'
-          git add README.md 
+          git add README.md jct_development.svg
           git commit -m "Render README" || echo "No changes to commit"
           
       - name: Push changes

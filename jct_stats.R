@@ -1,4 +1,9 @@
-library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(purrr)
+library(readr)
+library(forcats)
+library(ggplot2)
 
 #' Obtain git history only where data was updated in a file
 my_jct <- readr::read_tsv(
@@ -55,7 +60,9 @@ ggplot(my_jct_df, aes(time, value, fill = fct_rev(name))) +
   scale_fill_manual("Agreements in Journal Checker Tool",
                     values = c(active = "#56B4E9", vanished = "#b3b3b3a0"),
                     labels = c(active= "Included", vanished = "Archived")) +
-  scale_x_datetime(date_breaks = "2 month", labels = scales::label_date_short()) +
+  scale_x_datetime(date_breaks = "1 year", date_minor_breaks = "3 months",
+                   date_labels = "%Y",
+                   expand = expansion(mult = c(0, 0.01))) +
   scale_y_continuous(
     labels = function(x) format(x, big.mark = ",", scientific = FALSE),
     limits = c(0, NA),
@@ -65,6 +72,7 @@ ggplot(my_jct_df, aes(time, value, fill = fct_rev(name))) +
   theme_minimal(base_size = 10) +
   theme(legend.position = "top")
 
-ggsave("jct_development.pdf",
-       dpi = 300,
+#' Export as SVG for the README
+ggsave("jct_development.svg",
+       device = svglite::svglite,
        width = 6, height = 4)

@@ -3,6 +3,20 @@
 This repo contains weekly dumps of [public transformative agreement data](https://journalcheckertool.org/transformative-agreements/) as provided by the [Journal Checker Tool](https://journalcheckertool.org/) from the [cOAlition S](https://www.coalition-s.org/). 
 
 
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# Creates jct_development.svg and my_jct_df
+source("jct_stats.R", local = knitr::knit_global())
+
+latest <- my_jct_df |>
+  filter(time == max(time)) |>
+  select(name, value) |>
+  tidyr::pivot_wider()
+```
+
+![Development of transformative agreements in the Journal Checker Tool](jct_development.svg)
+
+As of `r as.Date(max(my_jct_df$time))`, `r format(latest$active, big.mark = ",")` agreements are currently included in the Journal Checker Tool, and `r format(latest$vanished, big.mark = ",")` archived agreements are safeguarded in this repo (`r format(latest$active + latest$vanished, big.mark = ",")` in total).
+
 ## Data
 
 Data are stored in the `data/` folder, comprising two files

@@ -3,6 +3,12 @@
 This repo contains weekly dumps of [public transformative agreement data](https://journalcheckertool.org/transformative-agreements/) as provided by the [Journal Checker Tool](https://journalcheckertool.org/) from the [cOAlition S](https://www.coalition-s.org/). 
 
 
+
+
+![Development of transformative agreements in the Journal Checker Tool](jct_development.svg)
+
+As of 2026-09-28, 545 agreements are currently included in the Journal Checker Tool, and 898 archived agreements are safeguarded in this repo (1,443 in total).
+
 ## Data
 
 Data are stored in the `data/` folder, comprising two files
