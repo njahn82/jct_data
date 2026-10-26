@@ -7,7 +7,7 @@ This repo contains weekly dumps of [public transformative agreement data](https:
 
 ![Development of transformative agreements in the Journal Checker Tool](jct_development.svg)
 
-As of 2026-09-28, 545 agreements are currently included in the Journal Checker Tool, and 898 archived agreements are safeguarded in this repo (1,443 in total).
+As of 2026-10-26, 544 agreements are currently included in the Journal Checker Tool, and 899 archived agreements are safeguarded in this repo (1,443 in total).
 
 ## Data
 
@@ -21,6 +21,7 @@ Data are stored in the `data/` folder, comprising two files
 
 |Time added          |Commit                                                                                                                                        |
 |:-------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|
+|2026-10-26 06:08:27 |<a href='https://github.com/njahn82/jct_data/tree/15456ab60c8c45b381fe62b98cb3ec0a7a7b9af7/data'>15456ab60c8c45b381fe62b98cb3ec0a7a7b9af7</a> |
 |2026-09-28 06:50:39 |<a href='https://github.com/njahn82/jct_data/tree/bfbc4c8964613f5b0e864774542fb8199d2a4f1d/data'>bfbc4c8964613f5b0e864774542fb8199d2a4f1d</a> |
 |2026-09-21 06:23:05 |<a href='https://github.com/njahn82/jct_data/tree/2acd699f71216417e7f9ccd8f5b648f6006423c2/data'>2acd699f71216417e7f9ccd8f5b648f6006423c2</a> |
 |2026-09-14 06:13:51 |<a href='https://github.com/njahn82/jct_data/tree/ece89cebc97f47e58985ebdd4feb221eb748bf26/data'>ece89cebc97f47e58985ebdd4feb221eb748bf26</a> |
@@ -220,14 +221,14 @@ Data are stored in the `data/` folder, comprising two files
 
 
 
-## Latest stats as on 2026-09-28
+## Latest stats as on 2026-10-26
 
 
 
-- 545 transformative agreements with ESAC ID
-- 20,099 journal titles covered
-- 7,516 institutions participating
-- 3,925 institutions covered have a ROR-ID
+- 544 transformative agreements with ESAC ID
+- 20,076 journal titles covered
+- 7,507 institutions participating
+- 3,924 institutions covered have a ROR-ID
 
 ## License
 
